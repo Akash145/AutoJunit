@@ -1,7 +1,9 @@
 package com.junit.tc.processor;
 
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import com.junit.tc.processor.Constants;
 
@@ -40,9 +42,22 @@ public static void main(String[] args) throws SecurityException, ClassNotFoundEx
 
 	private static String createTestMethod(String className, Method method, String methodName) {
 		String testMethodName = "test"+methodName;
+		Parameter[] parameters = getParameter(method);
 		String testMethodSign="@Test public void "+testMethodName+"() { "
 				+ "  } ";
 		return testMethodSign;
+	}
+	
+	private static Parameter[] getParameter(Method method){
+		// Use this link https://stackoverflow.com/questions/2237803/can-i-obtain-method-parameter-name-using-java-reflection
+		 /*
+		  * getting parameter names is not possible
+          * getting parameter type is possible, using method.getParameterTypes()
+          * use arg0, arg1, arg2 etc.
+          * use intParam, stringParam, objectTypeParam, etc.
+		 */
+		System.out.println("parameters" + method.getParameters());
+		return method.getParameters();
 	}
 	
 	private String addBlock(String blockType, String block) {
