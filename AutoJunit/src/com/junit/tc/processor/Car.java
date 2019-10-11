@@ -3,6 +3,11 @@ package com.junit.tc.processor;
 
 
 public class Car {
+	
+	String CarName= "Mercedez Benz";
+	String CarModel= "Super";
+	String ModelNumber= "1000";
+	
 	 public void fullThrottle() throws Exception{
 	    System.out.println("The car is going as fast as it can!");
 	  }
